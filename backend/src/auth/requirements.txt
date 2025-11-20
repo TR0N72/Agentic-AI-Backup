@@ -1,0 +1,7 @@
+fastapi
+python-jose[cryptography]
+passlib[bcrypt]
+uvicorn
+python-consul
+requests
+prometheus-fastapi-instrumentator

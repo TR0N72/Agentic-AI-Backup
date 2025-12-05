@@ -9,7 +9,8 @@ export const handleChat: RequestHandler = async (req, res) => {
   }
 
   try {
-    const response = await axios.post("http://ai:8000/llm/chat", {
+    const aiServiceUrl = process.env.AI_SERVICE_URL || "http://localhost:8011";
+    const response = await axios.post(`${aiServiceUrl}/llm/chat`, {
       text: message,
     });
 

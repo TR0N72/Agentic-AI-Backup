@@ -93,7 +93,7 @@ def _get_client_identifier(request: Request) -> str:
         return f"api_key:{api_key_hash}"
     
     # Fall back to IP address
-        client_ip = request.client.host if request.client else "unknown"
+    client_ip = request.client.host if request.client else "unknown"
     return f"ip:{client_ip}"
 
 

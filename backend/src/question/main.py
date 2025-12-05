@@ -1,4 +1,5 @@
 from fastapi import FastAPI, Depends, HTTPException
+from typing import List
 import pika
 import json
 from supabase import Client
@@ -87,7 +88,7 @@ async def read_question(question_id: int, supabase: Client = Depends(get_supabas
     # Check cache first
     cached_question = redis_client.get(f"question_{question_id}")
     if cached_question:
-        return json.loads(cached_question)
+        return QuestionResponse(**json.loads(cached_question))
 
     # If not in cache, get from DB
     response = supabase.table('questions').select("*").eq('question_id', question_id).execute()

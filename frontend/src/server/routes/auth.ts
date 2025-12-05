@@ -2,7 +2,7 @@
 import { Request, Response } from "express";
 import axios from "axios";
 
-const USER_SERVICE_URL = "http://user_service_new:8014";
+const USER_SERVICE_URL = process.env.USER_SERVICE_URL || "http://localhost:8014";
 
 export async function handleSignup(req: Request, res: Response) {
   try {
